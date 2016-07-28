@@ -20,7 +20,8 @@
   "keywords": [
     "hubot",
     "http",
-    "adapter"
+    "adapter",
+    "json"
   ],
   "license": "MIT",
   "readmeFilename": "readme.md"
