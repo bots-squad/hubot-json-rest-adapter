@@ -29,7 +29,8 @@ class WebAdapter extends Adapter
       options = {
         url: url,
         method: 'POST',
-        json: data
+        body: data,
+        json: true
       }
       request options, (err, res, body) -> 
           if err
