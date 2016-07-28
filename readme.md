@@ -9,7 +9,7 @@ Set `HUBOT_REST_SEND_URL` as an environment variable to send hubot responses to.
 Hubot response are sent in json format for easy managment of the data, and has the following format:
 
     {
-      from: 'nickname string',
+      from: 'botname',
       message: 'message body string'
     }
 
