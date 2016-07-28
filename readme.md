@@ -6,9 +6,12 @@ An adapter for [Hubot](https://github.com/github/hubot) to work via HTTP. Great 
 
 Set `HUBOT_REST_SEND_URL` as an environment variable to send hubot responses to.
 
-If you want Hubot responses to be formatted for HTML, currently replacing newlines with `<br>`s, set HUBOT_HTML_RESPONSE to true.
+Hubot response are sent in json format for easy managment of the data, and has the following format:
 
-Also, if you're running hubot on Heroku, set your Procfile as a web process and not an app.
+    {
+      from: 'nickname string',
+      message: 'message body string'
+    }
 
 ## Special Options Hash
 
