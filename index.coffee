@@ -26,9 +26,12 @@ class WebAdapter extends Adapter
         from: "#{@robot.name}"
       })
       url = "#{sendMessageUrl}/message/#{user.room}"
-      request.post(url)
-        .header('Content-Type', 'application/json')
-        .post(data) (err, res, body) -> 
+      options = {
+        url = url,
+        method: 'POST',
+        json = data
+      }
+      request options, (err, res, body) -> 
           if err
             console.log "There was an error sending the request to: #{url}"
       @send user, strings...
