@@ -1,8 +1,8 @@
 {
-  "name": "hubot-web",
+  "name": "hubot-json-rest",
   "version": "0.1.0",
   "author": {
-    "name": "steve klise"
+    "name": "Luis Alonzo"
   },
   "main": "./index",
   "devDependencies": {
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/stevenklise/hubot-web.git"
+    "url": "git://github.com/wichon/hubot-json-rest.git"
   },
   "keywords": [
     "hubot",
