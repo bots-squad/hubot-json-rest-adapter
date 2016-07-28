@@ -8,10 +8,6 @@ string = require("string")
 sendMessageUrl = process.env.HUBOT_REST_SEND_URL
 
 class WebAdapter extends Adapter
-  toHTML: (message) ->
-    # message = string(message).escapeHTML().s
-    message.replace(/\n/g, "<br>")
-
   createUser: (username, room) ->
     user = @robot.brain.userForName username
     unless user?
@@ -23,15 +19,18 @@ class WebAdapter extends Adapter
 
     user
 
-  send: (user, strings...) ->
+  send: (user, strings...) ->    
     if strings.length > 0
-
-      message = if process.env.HUBOT_HTML_RESPONSE then @toHTML(strings.shift()) else strings.shift()
-
-      request.post(sendMessageUrl+user.room).form({
-        message: message,
+      data = JSON.stringify({
+        message: strings.shift(),
         from: "#{@robot.name}"
       })
+      url = "#{sendMessageUrl}/message/#{user.room}"
+      request.post(url)
+        .header('Content-Type', 'application/json')
+        .post(data) (err, res, body) -> 
+          if err
+            console.log "There was an error sending the request to: #{url}"
       @send user, strings...
 
   reply: (user, strings...) ->
