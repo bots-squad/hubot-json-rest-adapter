@@ -27,9 +27,9 @@ class WebAdapter extends Adapter
       })
       url = "#{sendMessageUrl}/message/#{user.room}"
       options = {
-        url = url,
+        url: url,
         method: 'POST',
-        json = data
+        json: data
       }
       request options, (err, res, body) -> 
           if err
