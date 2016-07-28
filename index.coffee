@@ -4,7 +4,7 @@ TextMessage = require('hubot').TextMessage
 request = require('request')
 string = require("string")
 
-# sendmessageURL domain.com/messages/new/channel/ + user.channel
+# sendmessageURL domain.com/your/path/ + user.channel
 sendMessageUrl = process.env.HUBOT_REST_SEND_URL
 
 class WebAdapter extends Adapter
@@ -19,20 +19,21 @@ class WebAdapter extends Adapter
 
     user
 
-  send: (user, strings...) ->    
+  send: (user, strings...) ->
     if strings.length > 0
       data = JSON.stringify({
         message: strings.shift(),
         from: "#{@robot.name}"
       })
-      url = "#{sendMessageUrl}/message/#{user.room}"
+      # The resulting url will be sendMessageUrl + user.room, so sendMessageUrl must include the slash in the end
+      url = "#{sendMessageUrl}#{user.room}"
       options = {
         url: url,
         method: 'POST',
         body: data,
         json: true
       }
-      request options, (err, res, body) -> 
+      request options, (err, res, body) ->
           if err
             console.log "There was an error sending the request to: #{url}"
       @send user, strings...
