@@ -1,12 +1,14 @@
 # Hubot Rest Json Adapter
 
-An adapter for [Hubot](https://github.com/github/hubot) to work via HTTP using Json as data format. Great for your custom web chat interface.
+An adapter for [Hubot](https://github.com/github/hubot) to work via HTTP using Json as data format. 
+
+Useful for web chat interfaces.
 
 ## Setup
 
 Set `HUBOT_REST_SEND_URL` as an environment variable to send hubot responses to.
 
-Hubot response are sent in json format for easy managment of the data, and has the following format:
+Hubot response is sent in json format, with the following structure:
 
     {
       from: 'botname',
