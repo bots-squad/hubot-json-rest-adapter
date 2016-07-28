@@ -1,6 +1,6 @@
-# Hubot Web Adapter
+# Hubot Rest Json Adapter
 
-An adapter for [Hubot](https://github.com/github/hubot) to work via HTTP. Great for your custom web chat interface.
+An adapter for [Hubot](https://github.com/github/hubot) to work via HTTP using Json as data format. Great for your custom web chat interface.
 
 ## Setup
 
