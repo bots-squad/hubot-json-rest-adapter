@@ -56,9 +56,11 @@ class WebAdapter extends Adapter
 
       console.log "[#{req.params.room}] #{user.name} => #{req.body.message}"
 
-      res.setHeader 'content-type', 'text/html'
+      res.setHeader 'content-type', 'application/json'
+      res.setHeader 'Access-Control-Allow-Origin', '*'
+      res.setHeader 'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept'
       self.receive new TextMessage(user, req.body.message)
-      res.end 'received'
+      res.end JSON.stringify({status: 'received'})
 
     self.emit "connected"
 
