@@ -61,6 +61,14 @@ class WebAdapter extends Adapter
       res.setHeader 'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept'
       self.receive new TextMessage(user, req.body.message)
       res.end JSON.stringify({status: 'received'})
+    
+    # For preflight requests (CORS)
+    @robot.router.options '/receive/:room', (req, res) ->
+      res.setHeader 'content-type', 'application/json'
+      res.setHeader 'Access-Control-Allow-Origin', '*'
+      res.setHeader 'Access-Control-Request-Method', 'POST, OPTIONS'
+      res.setHeader 'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept'
+      res.end JSON.stringify({status: 'received'})
 
     self.emit "connected"
 
