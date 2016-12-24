@@ -2,7 +2,7 @@
 
 An adapter for [Hubot](https://github.com/github/hubot) to work via HTTP using Json as data format. 
 
-Useful for web chat interfaces.
+Useful for headless chat.
 
 ## Setup
 
@@ -15,20 +15,14 @@ Hubot response is sent in json format, with the following structure:
       message: 'message body string'
     }
 
-## Special Options Hash
+## Send message to Hubot
 
-Typically messages to Hubot have three parameters: Message, User and Room. This
-adapter allows for an extendable options has to be sent with the message.
+Typically messages to Hubot have three parameters: Message, User and Room.
 
 To send options, when posting to Hubot use the following hash:
 
     // post: /receive/:room
     {
       from: 'nickname string',
-      message: 'message body string',
-      options: {
-        "javascript": "object"
-      }
+      message: 'message body string'
     }
-
-The `options` hash can be accessed in a script with `msg.message.user.options`.
