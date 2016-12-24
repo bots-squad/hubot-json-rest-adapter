@@ -1,8 +1,8 @@
 {
-  "name": "hubot-json-rest",
+  "name": "hubot-json-rest-adapter",
   "version": "1.0.0",
   "author": {
-    "name": "Luis Alonzo"
+    "name": "@k33g_org"
   },
   "main": "./index",
   "devDependencies": {
@@ -10,12 +10,12 @@
   },
   "description": "readme.md",
   "dependencies": {
-    "request": "2.12.0",
+    "node-fetch": "^1.6.1",
     "string": "1.3.0"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/wichon/hubot-json-rest.git"
+    "url": "git://github.com/bots-squad/hubot-json-rest-adapter.git"
   },
   "keywords": [
     "hubot",
