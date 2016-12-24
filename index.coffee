@@ -1,7 +1,7 @@
 Robot = require('hubot').Robot
 Adapter = require('hubot').Adapter
 TextMessage = require('hubot').TextMessage
-request = require('request')
+fetch = require('node-fetch')
 string = require("string")
 
 # sendmessageURL domain.com/your/path/ + user.channel
@@ -31,11 +31,11 @@ class WebAdapter extends Adapter
         url: url,
         method: 'POST',
         body: data,
-        json: true
+        headers: {
+          "Content-Type": "application/json"
+        }
       }
-      request options, (err, res, body) ->
-          if err
-            console.log "There was an error sending the request to: #{url}"
+      fetch url, options # TODO: manage errors
       @send user, strings...
 
   reply: (user, strings...) ->
