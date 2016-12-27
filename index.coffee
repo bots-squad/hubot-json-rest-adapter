@@ -44,15 +44,8 @@ class WebAdapter extends Adapter
   run: ->
     self = @
 
-    options = {}
-
     @robot.router.post '/receive/:room', (req, res) ->
       user = self.createUser(req.body.from, req.params.room)
-
-      if req.body.options
-        user.options = JSON.parse(req.body.options)
-      else
-        user.options = {}
 
       console.log "[#{req.params.room}] #{user.name} => #{req.body.message}"
 
@@ -62,14 +55,6 @@ class WebAdapter extends Adapter
       self.receive new TextMessage(user, req.body.message)
       res.end JSON.stringify({status: 'received'})
     
-    # For preflight requests (CORS)
-    @robot.router.options '/receive/:room', (req, res) ->
-      res.setHeader 'content-type', 'application/json'
-      res.setHeader 'Access-Control-Allow-Origin', '*'
-      res.setHeader 'Access-Control-Request-Method', 'POST, OPTIONS'
-      res.setHeader 'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept'
-      res.end JSON.stringify({status: 'received'})
-
     self.emit "connected"
 
 exports.use = (robot) ->
