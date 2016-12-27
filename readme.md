@@ -17,9 +17,7 @@ Hubot response is sent in json format, with the following structure:
 
 ## Send message to Hubot
 
-Typically messages to Hubot have three parameters: Message, User and Room.
-
-To send options, when posting to Hubot use the following hash:
+Typically messages to Hubot have three parameters: Message, User and Room:
 
     // post: /receive/:room
     {
